@@ -1,6 +1,6 @@
 const SideMenu = () => (
   <div>
-    <h1 className="my-4">Shop Name</h1>
+    <h1 className="my-4">Movies DB</h1>
     <div className="list-group">
       <a href="#" className="list-group-item">
         Category 1
