@@ -15,22 +15,22 @@ class Home extends React.Component {
     };
   }
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      movies: [],
-      errorMessage: "",
-    };
-  }
-  componentDidMount() {
-    getMovies()
-      .then((movies) => {
-        this.setState({ movies });
-      })
-      .catch((error) => {
-        this.setState({ errorMessage: error });
-      });
-  }
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     movies: [],
+  //     errorMessage: "",
+  //   };
+  // }
+  // componentDidMount() {
+  //   getMovies()
+  //     .then((movies) => {
+  //       this.setState({ movies });
+  //     })
+  //     .catch((error) => {
+  //       this.setState({ errorMessage: error });
+  //     });
+  // }
 
   render() {
     const { movies, errorMessage } = this.props;

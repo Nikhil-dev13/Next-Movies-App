@@ -4,8 +4,16 @@ import Head from "next/head";
 import Nav from "../components/navbar";
 import Footer from "../components/footer";
 class MovieApp extends App {
+  //Executing getInitial props of the page navigating to
+  static async getInitialProps(appContext) {
+    const appProps = await App.getInitialProps(appContext);
+    return {
+      ...appProps,
+    };
+  }
+
   render() {
-    const { Component } = this.props;
+    const { Component, pageProps } = this.props;
 
     return (
       <div>
@@ -35,7 +43,7 @@ class MovieApp extends App {
         </Head>
         <Nav />
         <div className="page-container">
-          <Component />
+          <Component {...pageProps} />
         </div>
         <Footer />
         <style jsx>
