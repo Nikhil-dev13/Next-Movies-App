@@ -9,31 +9,21 @@ import { getMovies } from "../actions";
 class Home extends React.Component {
   static async getInitialProps() {
     const movies = await getMovies();
-
+    const images = movies.map((movie) => {
+      return {
+        id: `image-${movie.id}`,
+        url: movie.image,
+        name: movie.name,
+      };
+    });
     return {
       movies,
+      images,
     };
   }
 
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     movies: [],
-  //     errorMessage: "",
-  //   };
-  // }
-  // componentDidMount() {
-  //   getMovies()
-  //     .then((movies) => {
-  //       this.setState({ movies });
-  //     })
-  //     .catch((error) => {
-  //       this.setState({ errorMessage: error });
-  //     });
-  // }
-
   render() {
-    const { movies, errorMessage } = this.props;
+    const { movies, errorMessage, images } = this.props;
     return (
       <div>
         <div className="home-page">
@@ -44,7 +34,7 @@ class Home extends React.Component {
               </div>
 
               <div className="col-lg-9">
-                <Carousel />
+                <Carousel images={images} />
 
                 <div className="row">
                   {errorMessage && (
