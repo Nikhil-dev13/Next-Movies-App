@@ -4,11 +4,12 @@ import SideMenu from "../components/sideMenu";
 import Carousel from "../components/carousel";
 import MovieList from "../components/movieList";
 
-import { getMovies } from "../actions";
+import { getCategories, getMovies } from "../actions";
 
 class Home extends React.Component {
   static async getInitialProps() {
     const movies = await getMovies();
+    const categories = await getCategories();
     const images = movies.map((movie) => {
       return {
         id: `image-${movie.id}`,
@@ -19,18 +20,19 @@ class Home extends React.Component {
     return {
       movies,
       images,
+      categories,
     };
   }
 
   render() {
-    const { movies, errorMessage, images } = this.props;
+    const { movies, errorMessage, images, categories } = this.props;
     return (
       <div>
         <div className="home-page">
           <div className="container">
             <div className="row">
               <div className="col-lg-3">
-                <SideMenu />
+                <SideMenu categories={categories} />
               </div>
 
               <div className="col-lg-9">
