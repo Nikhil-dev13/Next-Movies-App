@@ -79,3 +79,13 @@ export const getMovieById = (id) => {
     setTimeout(() => resolve(movie), 50);
   });
 };
+
+export const createMovie = (movie) => {
+  return new Promise((resolve, reject) => {
+    MOVIE_DATA.push(movie);
+    setTimeout(() => {
+      resolve(MOVIE_DATA);
+      //   reject("Cant fetch data");
+    }, 50);
+  });
+};
