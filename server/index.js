@@ -13,6 +13,14 @@ app.prepare().then(() => {
     res.json(moviesData);
   });
 
+  server.get(`/api/v1/movies/:id`, (req, res) => {
+    const { id } = req.params;
+
+    const movie = moviesData.find((m) => m.id === id);
+
+    return res.json(movie);
+  });
+
   server.get("*", (req, res) => {
     return handle(req, res);
   });
