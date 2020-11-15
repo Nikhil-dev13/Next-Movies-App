@@ -1,14 +1,17 @@
+import React from "react";
+import { useRouter } from "next/router";
 import { createMovie } from "../actions";
 import Modal from "./modal";
 import MovieCreateForm from "./movieCreateForm";
 
 const SideMenu = ({ categories }) => {
   let modal = null;
-
+  let router = useRouter();
   const handleCreateMovie = (movie) => {
     createMovie(movie).then((movies) => {
       console.log(JSON.stringify(movies));
       modal.closeModal();
+      router.push("/");
     });
   };
 
